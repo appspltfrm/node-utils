@@ -2,7 +2,6 @@
   "name": "@appspltfrm/node-utils",
   "version": "1.0.0",
   "author": "Unipla",
-  "private": false,
   "type": "commonjs",
   "bin": {
     "node-utils-file-system-copy-directory": "dist/file-system/cli/copyDirectory.js",
@@ -38,4 +37,4 @@
       "default": "./dist/*/index.js"
     }
   }
-},
+}
