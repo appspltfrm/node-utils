@@ -9,10 +9,10 @@
         "moduleResolution": "node",
         "target": "esnext",
         "rootDir": "src",
-        "outDir": "dist"
-  },
-
-  "exclude": [
+        "outDir": "dist",
+        "importHelpers": true
+    },
+    "exclude": [
     "node_modules"
   ],
 
