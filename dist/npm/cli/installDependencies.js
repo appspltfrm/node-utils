@@ -15,7 +15,7 @@ if (process.cwd().indexOf("node_modules") < 0 && type) {
     if (Object.keys(dependencies).length) {
         for (const [d, v] of Object.entries(dependencies)) {
             const n = type === "optional" ? d : (v.startsWith("file:") || v.startsWith("github:") ? v : d);
-            child_process.execSync(`npm install ${d} --no-save`, { stdio: "inherit" });
+            child_process.execSync(`npm install ${n} --no-save`, { stdio: "inherit" });
         }
     }
 }
