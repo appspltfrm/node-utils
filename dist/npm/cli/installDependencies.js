@@ -7,8 +7,8 @@ const path = tslib_1.__importStar(require("path"));
 const process = tslib_1.__importStar(require("process"));
 const child_process = tslib_1.__importStar(require("child_process"));
 const args = process.argv.slice(2);
-const type = path.resolve(args[0]);
-if (process.cwd().indexOf("node_modules") < 0) {
+const type = args[0];
+if (process.cwd().indexOf("node_modules") < 0 && type) {
     const rootDir = path.resolve("./");
     const pckg = fs.readJsonSync("package.json");
     const dependencies = pckg[`${type}Dependencies`];

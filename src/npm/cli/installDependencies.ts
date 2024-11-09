@@ -6,9 +6,9 @@ import * as process from "process";
 import * as child_process from "child_process";
 
 const args = process.argv.slice(2);
-const type = path.resolve(args[0]);
+const type = args[0];
 
-if (process.cwd().indexOf("node_modules") < 0) {
+if (process.cwd().indexOf("node_modules") < 0 && type) {
 
     const rootDir = path.resolve("./");
     const pckg = fs.readJsonSync("package.json");
