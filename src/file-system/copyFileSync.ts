@@ -1,5 +1,5 @@
-import * as fs from "fs";
+import {writeFileSync, readFileSync} from "fs";
 
 export function copyFileSync(source, target) {
-    fs.writeFileSync(target, fs.readFileSync(source));
+    writeFileSync(target, readFileSync(source));
 }

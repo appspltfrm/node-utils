@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import * as process from "process";
-import {globRename} from "../globRename";
+import {globRename} from "../globRename.js";
 
 const args = process.argv.slice(2);
 const find = args[0];

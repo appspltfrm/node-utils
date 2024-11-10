@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import * as process from "process";
-import {globDelete} from "../globDelete";
+import process from "process";
+import {globDelete} from "../globDelete.js";
 
 const args = process.argv.slice(2);
 

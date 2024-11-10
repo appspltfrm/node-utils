@@ -1,8 +1,9 @@
-import * as fs from "fs-extra";
-import * as path from "path";
+import {readJsonSync} from "fs-extra/esm";
+import {existsSync} from "fs";
+import path from "path";
 
 const rootDir = path.resolve("./");
-const rootPckg = fs.readJsonSync("package.json");
+const rootPckg = readJsonSync("package.json");
 
 interface SourceDependencies {
     [depsName: string]: {modulePath: string, srcPath: string, srcDir: string, repoPath?: string}
@@ -21,12 +22,12 @@ export function sourceDependencies() {
 function readPackageDependencies(dir: string, deps: SourceDependencies) {
 
     const jsonPath = path.resolve(dir, "package.json");
-    if (!fs.existsSync(jsonPath)) {
+    if (!existsSync(jsonPath)) {
         console.warn(`Missing package.json in ${dir} it should be there if you want to use source dependencies.`);
         return deps;
     }
 
-    const pckg = fs.readJsonSync(jsonPath);
+    const pckg = readJsonSync(jsonPath);
 
     if (deps[pckg.name]) {
         return deps;

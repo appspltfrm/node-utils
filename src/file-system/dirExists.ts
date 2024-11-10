@@ -1,10 +1,10 @@
-import * as fs from "fs";
+import {statSync, Stats} from "fs";
 
 export function dirExists(path) {
 
-    let stat;
+    let stat: Stats | undefined;
     try {
-        stat = fs.statSync(path);
+        stat = statSync(path);
     } catch (e) {
     }
 

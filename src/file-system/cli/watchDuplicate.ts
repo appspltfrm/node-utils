@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import {watchDuplicate} from "../watchDuplicate";
+import {watchDuplicate} from "../watchDuplicate.js";
 
 const args = process.argv.slice(2);
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import * as path from "path";
-import * as process from "process";
-import {globCopy} from "../globCopy";
+import path from "path";
+import process from "process";
+import {globCopy} from "../globCopy.js";
 
 const args = process.argv.slice(2);
 const source = path.resolve(args[0]);

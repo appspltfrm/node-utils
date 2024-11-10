@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import * as watch from "chokidar";
-import {copySync, readJsonSync, removeSync} from "fs-extra";
-import * as path from "path";
-import {sourceDependencies} from "./sourceDependencies";
+import watch from "chokidar";
+import {copySync, readJsonSync, removeSync} from "fs-extra/esm";
+import path from "path";
+import {sourceDependencies} from "./sourceDependencies.js";
 
 const rootDir = path.resolve("./");
 const pckg = readJsonSync("package.json");

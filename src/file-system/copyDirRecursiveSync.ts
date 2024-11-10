@@ -1,17 +1,17 @@
-import * as fs from "fs";
+import {mkdirSync, existsSync, lstatSync, readdirSync} from "fs";
 import * as path from "path";
-import {copyFileSync} from "./copyFileSync";
+import {copyFileSync} from "./copyFileSync.js";
 
 export function copyDirRecursiveSync(source: string, target: string, options?: { exclude?: Array<string | RegExp> }) {
 
-    if (!fs.existsSync(target)) {
-        fs.mkdirSync(target);
+    if (!existsSync(target)) {
+        mkdirSync(target);
     }
 
     // copy
-    if (fs.lstatSync(source).isDirectory()) {
+    if (lstatSync(source).isDirectory()) {
 
-        fs.readdirSync(source).forEach(function (fileName) {
+        readdirSync(source).forEach(function (fileName) {
 
             let file = path.join(source, fileName);
 
@@ -23,7 +23,7 @@ export function copyDirRecursiveSync(source: string, target: string, options?: {
                 }
             }
 
-            if (fs.lstatSync(file).isDirectory()) {
+            if (lstatSync(file).isDirectory()) {
                 copyDirRecursiveSync(file, path.join(target, fileName));
             } else {
                 copyFileSync(file, path.join(target, fileName));

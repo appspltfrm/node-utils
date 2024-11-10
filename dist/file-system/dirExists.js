@@ -1,12 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.dirExists = dirExists;
-const tslib_1 = require("tslib");
-const fs = tslib_1.__importStar(require("fs"));
-function dirExists(path) {
+import { statSync } from "fs";
+export function dirExists(path) {
     let stat;
     try {
-        stat = fs.statSync(path);
+        stat = statSync(path);
     }
     catch (e) {
     }

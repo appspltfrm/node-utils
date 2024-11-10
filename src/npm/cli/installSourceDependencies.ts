@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-import * as fs from "fs-extra";
-import * as path from "path";
-import * as process from "process";
-import {copyDirRecursiveSync} from "../../file-system";
-import {sourceDependencies} from "./sourceDependencies";
+import {readJsonSync, ensureDirSync} from "fs-extra/esm";
+import path from "path";
+import process from "process";
+import {copyDirRecursiveSync} from "../../file-system/copyDirRecursiveSync.js";
+import {sourceDependencies} from "./sourceDependencies.js";
 
 if (process.cwd().indexOf("node_modules") < 0) {
 
     const rootDir = path.resolve("./");
-    const pckg = fs.readJsonSync("package.json");
+    const pckg = readJsonSync("package.json");
     const dependencies = sourceDependencies();
 
     if (Object.keys(dependencies).length) {
@@ -18,7 +18,7 @@ if (process.cwd().indexOf("node_modules") < 0) {
 
             for (const depName of Object.keys(dependencies)) {
                 const out = path.resolve(rootDir, pckg.sourceDependenciesOutDir, depName);
-                fs.ensureDirSync(out);
+                ensureDirSync(out);
                 copyDirRecursiveSync(dependencies[depName].srcPath, out);
             }
 

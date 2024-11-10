@@ -1,10 +1,10 @@
-import * as fs from "fs";
+import {statSync, mkdirSync} from "fs";
 
 export function createDirIfNotExists(path) {
 
     let stat;
     try {
-        stat = fs.statSync(path);
+        stat = statSync(path);
     } catch (e) {
     }
 
@@ -14,6 +14,6 @@ export function createDirIfNotExists(path) {
     } else if (stat && stat.isDirectory()) {
 
     } else {
-        fs.mkdirSync(path);
+        mkdirSync(path);
     }
 }

@@ -1,7 +1,5 @@
 #!/usr/bin/env node
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const watchDuplicate_1 = require("../watchDuplicate");
+import { watchDuplicate } from "../watchDuplicate.js";
 const args = process.argv.slice(2);
 const watch = [];
 for (let index = 0; index < args.length; index++) {
@@ -12,4 +10,4 @@ for (let index = 0; index < args.length; index++) {
     }
     watch.push([source, target]);
 }
-(0, watchDuplicate_1.watchDuplicate)(...watch);
+watchDuplicate(...watch);

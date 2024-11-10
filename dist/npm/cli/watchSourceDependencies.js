@@ -1,14 +1,11 @@
 #!/usr/bin/env node
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = require("tslib");
-const watch = tslib_1.__importStar(require("chokidar"));
-const fs_extra_1 = require("fs-extra");
-const path = tslib_1.__importStar(require("path"));
-const sourceDependencies_1 = require("./sourceDependencies");
+import watch from "chokidar";
+import { copySync, readJsonSync, removeSync } from "fs-extra/esm";
+import path from "path";
+import { sourceDependencies } from "./sourceDependencies.js";
 const rootDir = path.resolve("./");
-const pckg = (0, fs_extra_1.readJsonSync)("package.json");
-const dependencies = (0, sourceDependencies_1.sourceDependencies)();
+const pckg = readJsonSync("package.json");
+const dependencies = sourceDependencies();
 if (pckg.sourceDependenciesOutDir) {
     console.log(`Started watching source dependencies:`);
     for (const depName of Object.keys(dependencies)) {
@@ -21,25 +18,25 @@ if (pckg.sourceDependenciesOutDir) {
             watcher.on("change", (filename, stats) => {
                 console.log(`changed file ${filename}`);
                 for (const o of [moduleOut, out]) {
-                    (0, fs_extra_1.copySync)(filename, path.join(o, filename.substr(source.length)), { preserveTimestamps: true });
+                    copySync(filename, path.join(o, filename.substr(source.length)), { preserveTimestamps: true });
                 }
             });
             watcher.on("add", (filename, stats) => {
                 console.log(`added file ${filename}`);
                 for (const o of [moduleOut, out]) {
-                    (0, fs_extra_1.copySync)(filename, path.join(o, filename.substr(source.length)), { preserveTimestamps: true });
+                    copySync(filename, path.join(o, filename.substr(source.length)), { preserveTimestamps: true });
                 }
             });
             watcher.on("unlink", (filename, stats) => {
                 console.log(`deleted file ${filename}`);
                 for (const o of [moduleOut, out]) {
-                    (0, fs_extra_1.removeSync)(path.join(o, filename.substr(source.length)));
+                    removeSync(path.join(o, filename.substr(source.length)));
                 }
             });
             watcher.on("unlinkDir", (filename, stats) => {
                 console.log(`deleted dir ${filename}`);
                 for (const o of [moduleOut, out]) {
-                    (0, fs_extra_1.removeSync)(path.join(o, filename.substr(source.length)));
+                    removeSync(path.join(o, filename.substr(source.length)));
                 }
             });
         }

@@ -1,12 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.createDirIfNotExists = createDirIfNotExists;
-const tslib_1 = require("tslib");
-const fs = tslib_1.__importStar(require("fs"));
-function createDirIfNotExists(path) {
+import { statSync, mkdirSync } from "fs";
+export function createDirIfNotExists(path) {
     let stat;
     try {
-        stat = fs.statSync(path);
+        stat = statSync(path);
     }
     catch (e) {
     }
@@ -16,6 +12,6 @@ function createDirIfNotExists(path) {
     else if (stat && stat.isDirectory()) {
     }
     else {
-        fs.mkdirSync(path);
+        mkdirSync(path);
     }
 }

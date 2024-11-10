@@ -1,7 +1,7 @@
-import * as fs from "fs";
-import * as fse from "fs-extra";
-import * as Glob from "glob";
-import * as path from "path";
+import {existsSync, statSync, unlinkSync} from "fs";
+import {removeSync} from "fs-extra/esm";
+import {sync} from "glob";
+import path from "path";
 
 export function globDelete(paths, options) {
 
@@ -11,18 +11,18 @@ export function globDelete(paths, options) {
 
         if (typeof query === "string") {
 
-            Glob.sync(query, {root: rootDir}).forEach(function (file) {
+            sync(query, {root: rootDir}).forEach(function (file) {
 
                 file = path.resolve(rootDir, file);
 
-                if (fs.existsSync(file)) {
+                if (existsSync(file)) {
 
-                    const stat = fs.statSync(file);
+                    const stat = statSync(file);
 
                     if (stat.isDirectory()) {
-                        fse.removeSync(file);
+                        removeSync(file);
                     } else {
-                        fs.unlinkSync(file);
+                        unlinkSync(file);
                     }
                 }
 

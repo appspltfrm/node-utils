@@ -2,7 +2,7 @@
   "name": "@appspltfrm/node-utils",
   "version": "1.0.0",
   "author": "Unipla",
-  "type": "commonjs",
+  "type": "module",
   "bin": {
     "node-utils-file-system-copy-directory": "dist/file-system/cli/copyDirectory.js",
     "node-utils-file-system-glob-copy": "dist/file-system/cli/globCopy.js",
@@ -15,7 +15,7 @@
     "node-utils-npm-watch-source-dependencies": "dist/npm/cli/watchSourceDependencies.js"
   },
   "scripts": {
-    "build": "ts-node src/file-system/cli/clearDir.ts dist && tsc"
+    "build": "tsx src/file-system/cli/clearDir.ts dist && tsc"
   },
   "dependencies": {
     "chokidar": "^4.0.1",
@@ -27,15 +27,14 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.0",
-    "@types/node": "^20.0.0",
-    "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
+    "tsx": "^4.19.2",
     "typescript": "^5.6.3"
   },
   "exports": {
-    "./*": {
-      "types": "./dist/*/index.d.ts",
-      "default": "./dist/*/index.js"
+    "./filesystem": {
+      "types": "./dist/filesystem/public.d.ts",
+      "default": "./dist/filesystem/public.js"
     }
   }
 }

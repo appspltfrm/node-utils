@@ -1,6 +1,6 @@
-import * as fs from "fs";
-import * as Glob from "glob";
-import * as path from "path";
+import {renameSync} from "fs";
+import {sync} from "glob";
+import path from "path";
 
 export function globRename(source: string, matches: string[], find: string, replace: string) {
 
@@ -10,13 +10,13 @@ export function globRename(source: string, matches: string[], find: string, repl
 
         if (typeof match === "string") {
 
-            Glob.sync((match.charAt(0) === "/" ? "" : "/") + match, {root: sourceDir}).forEach((file) => {
+            sync((match.charAt(0) === "/" ? "" : "/") + match, {root: sourceDir}).forEach((file) => {
 
                 const sourcePath = path.resolve(sourceDir, file);
                 const targetPath = path.resolve(sourceDir, file.replace(sourceDir + "/", "").replace(find, replace));
 
                 if (sourcePath != targetPath) {
-                    fs.renameSync(sourcePath, targetPath);
+                    renameSync(sourcePath, targetPath);
                 }
             });
         }

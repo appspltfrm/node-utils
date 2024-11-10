@@ -5,9 +5,9 @@
         "declaration": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "target": "esnext",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "target": "ESNext",
         "rootDir": "src",
         "outDir": "dist",
         "importHelpers": true

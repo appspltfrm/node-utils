@@ -1,8 +1,8 @@
-import * as fs from "fs";
-import * as Glob from "glob";
-import * as path from "path";
-import {copyFileSync} from "./copyFileSync";
-import {createDirs} from "./createDirs";
+import {statSync} from "fs";
+import {sync} from "glob";
+import path from "path";
+import {copyFileSync} from "./copyFileSync.js";
+import {createDirs} from "./createDirs.js";
 
 export function globCopy(source: string, segments: string[], target: string) {
 
@@ -13,12 +13,12 @@ export function globCopy(source: string, segments: string[], target: string) {
 
         if (typeof query === "string") {
 
-            Glob.sync((query.charAt(0) === "/" ? "" : "/") + query, {root: sourceDir}).forEach((segment) => {
+            sync((query.charAt(0) === "/" ? "" : "/") + query, {root: sourceDir}).forEach((segment) => {
 
                 const sourcePath = path.resolve(sourceDir, segment);
                 const targetPath = path.resolve(targetDir, segment.replace(sourceDir + "/", ""));
 
-                const stat = fs.statSync(sourcePath);
+                const stat = statSync(sourcePath);
 
                 if (stat.isFile()) {
                     createDirs(path.dirname(targetPath));

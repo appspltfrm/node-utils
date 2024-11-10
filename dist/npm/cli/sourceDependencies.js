@@ -1,12 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.sourceDependencies = sourceDependencies;
-const tslib_1 = require("tslib");
-const fs = tslib_1.__importStar(require("fs-extra"));
-const path = tslib_1.__importStar(require("path"));
+import { readJsonSync } from "fs-extra/esm";
+import { existsSync } from "fs";
+import path from "path";
 const rootDir = path.resolve("./");
-const rootPckg = fs.readJsonSync("package.json");
-function sourceDependencies() {
+const rootPckg = readJsonSync("package.json");
+export function sourceDependencies() {
     const deps = {};
     if (rootPckg.sourceDependencies) {
         readPackageDependencies(rootDir, deps);
@@ -15,11 +12,11 @@ function sourceDependencies() {
 }
 function readPackageDependencies(dir, deps) {
     const jsonPath = path.resolve(dir, "package.json");
-    if (!fs.existsSync(jsonPath)) {
+    if (!existsSync(jsonPath)) {
         console.warn(`Missing package.json in ${dir} it should be there if you want to use source dependencies.`);
         return deps;
     }
-    const pckg = fs.readJsonSync(jsonPath);
+    const pckg = readJsonSync(jsonPath);
     if (deps[pckg.name]) {
         return deps;
     }

@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 
-import * as path from "path";
-import * as process from "process";
-import {clearDir, copyDirRecursiveSync, dirExists} from "../../file-system";
+import path from "path";
+import process from "process";
+import {clearDir} from "../../file-system/clearDir.js";
+import {copyDirRecursiveSync} from "../../file-system/copyDirRecursiveSync.js";
+import {dirExists} from "../../file-system/dirExists.js";
 
 if (process.cwd().indexOf("node_modules") > -1) {
     const source = path.join(process.cwd(), "dist");

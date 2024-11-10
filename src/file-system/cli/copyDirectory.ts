@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import * as path from "path";
-import * as process from "process";
-import {copyDirRecursiveSync} from "../copyDirRecursiveSync";
-import {dirExists} from "../dirExists";
+import path from "path";
+import process from "process";
+import {copyDirRecursiveSync} from "../copyDirRecursiveSync.js";
+import {dirExists} from "../dirExists.js";
 
 const args = process.argv.slice(2);
 const source = path.resolve(args[0]);
