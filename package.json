@@ -32,9 +32,9 @@
     "typescript": "^5.6.3"
   },
   "exports": {
-    "./filesystem": {
-      "types": "./dist/filesystem/public.d.ts",
-      "default": "./dist/filesystem/public.js"
+    "./file-system": {
+      "types": "./dist/file-system/public.d.ts",
+      "default": "./dist/file-system/public.js"
     }
   }
 }
