@@ -12,15 +12,18 @@
     "node-utils-npm-install-dependencies": "dist/npm/cli/installDependencies.js",
     "node-utils-npm-install-dist": "dist/npm/cli/installDist.js",
     "node-utils-npm-install-source-dependencies": "dist/npm/cli/installSourceDependencies.js",
-    "node-utils-npm-watch-source-dependencies": "dist/npm/cli/watchSourceDependencies.js"
+    "node-utils-npm-watch-source-dependencies": "dist/npm/cli/watchSourceDependencies.js",
+    "tsr": "dist/ts-run/index.js"
   },
   "scripts": {
-    "build": "tsx src/file-system/cli/clearDir.ts dist && tsc"
+    "build": "tsx src/file-system/cli/clearDir.ts dist && tsc",
+    "test:tsr": "node --import tsx test/ts-run/ts-run.test.ts",
+    "release": "../../prepare-release.sh node-utils"
   },
   "dependencies": {
     "chokidar": "^4.0.1",
     "fs-extra": "^11.0.0",
-    "glob": "^11.0.0"
+    "glob": "^13.0.6"
   },
   "peerDependencies": {
     "tslib": "^2.8.1"
@@ -29,12 +32,15 @@
     "@types/fs-extra": "^11.0.0",
     "tslib": "^2.8.1",
     "tsx": "^4.19.2",
-    "typescript": "^5.6.3"
+    "typescript": "^5.9.3"
   },
   "exports": {
     "./file-system": {
-      "types": "./dist/file-system/public.d.ts",
-      "default": "./dist/file-system/public.js"
+      "types": "./dist/file-system/index.d.ts",
+      "default": "./dist/file-system/index.js"
     }
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
