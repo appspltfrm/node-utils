@@ -59,7 +59,7 @@ async function main() {
             outDir: tempDir,
             rootDir: packageRoot,
             sourceMap: true,
-            noEmit: false,
+            noEmit: false
         };
         if (!baseTsConfigPath) {
             Object.assign(compilerOptions, {
@@ -70,7 +70,7 @@ async function main() {
                 skipLibCheck: true,
                 allowJs: true,
                 checkJs: false,
-                strict: false,
+                strict: false
             });
         }
         const tempTsConfig = {

@@ -1,6 +1,6 @@
 {
   "name": "@appspltfrm/node-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Unipla",
   "type": "module",
   "bin": {
@@ -18,7 +18,7 @@
   "scripts": {
     "build": "tsx src/file-system/cli/clearDir.ts dist && tsc",
     "test:tsr": "node --import tsx test/ts-run/ts-run.test.ts",
-    "release": "../../prepare-release.sh node-utils"
+    "release": "../../releases/release.mjs node-utils"
   },
   "dependencies": {
     "chokidar": "^4.0.1",
