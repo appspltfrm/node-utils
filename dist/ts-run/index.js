@@ -57,7 +57,6 @@ async function main() {
         const packageRoot = findPackageRoot(inputDir);
         const compilerOptions = {
             outDir: tempDir,
-            rootDir: packageRoot,
             sourceMap: true,
             noEmit: false
         };

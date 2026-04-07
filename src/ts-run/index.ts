@@ -67,7 +67,7 @@ async function main() {
 
     const compilerOptions: any = {
       outDir: tempDir,
-      rootDir: packageRoot,
+      //rootDir: packageRoot,
       sourceMap: true,
       noEmit: false
     };
