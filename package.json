@@ -1,6 +1,6 @@
 {
   "name": "@appspltfrm/node-utils",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Unipla",
   "type": "module",
   "bin": {
@@ -16,28 +16,29 @@
     "tsr": "dist/ts-run/index.js"
   },
   "scripts": {
-    "build": "tsx src/file-system/cli/clearDir.ts dist && tsc",
+    "build": "tsx src/file-system/cli/clearDir.ts dist && tsc && chmod +x ./dist/**/* ",
     "test:tsr": "node --import tsx test/ts-run/ts-run.test.ts",
     "release": "../../releases/release.mjs node-utils"
   },
   "dependencies": {
     "chokidar": "^4.0.1",
     "fs-extra": "^11.0.0",
-    "glob": "^13.0.6"
+    "glob": "^13.0.6",
+    "typescript": "^5.9.3"
   },
   "peerDependencies": {
-    "tslib": "^2.8.1"
+    "tslib": "^2.8.1",
+    "tsx": "^4.19.2"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.0",
-    "tslib": "^2.8.1",
-    "tsx": "^4.19.2",
-    "typescript": "^5.9.3"
+    "tslib": "^2.8.1"
   },
   "exports": {
-    "./file-system": {
-      "types": "./dist/file-system/index.d.ts",
-      "default": "./dist/file-system/index.js"
+    "./*": {
+      "monorepo": "./src/*",
+      "types": "./dist/*",
+      "default": "./dist/*"
     }
   },
   "files": [
